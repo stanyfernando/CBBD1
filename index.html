@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="HSN CODE FINDER">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/2gMn5wQ/Untitled-1.png">
+    <meta property="og:description" content="HSN code stands for “Harmonized System of Nomenclature”. This system has been introduced for the systematic classification of goods all over the world.">
+    <meta property="og:image" content="https://adaderanaenglish.s3.amazonaws.com/1710866624-Sri-Lanka-Customs-l.jpg">
+    <meta property="og:url" content="https://hsnfinder.xyz">
+    <title>CBBD1 AVERAGE WEIGHT FINDER</title>
+    <style>
+      /* Body styles */
+      body {
+        background-color: #212121;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* Container styles */
+      .container {
+        max-width: 800px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+        text-align: center;
+      }
+
+      /* Search box styles */
+      #search-box {
+        background-color: #171717;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      /* Table styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin-top: 50px;
+        border-radius: 5px;
+        overflow: hidden;
+        display: none;
+      }
+
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        color: #333;
+      }
+
+      .product-name {
+        font-weight: bold;
+      }
+
+      .category-label {
+        display: none;
+      }
+
+      .no-results {
+        display: none;
+        color: #fff;
+      }
+
+      /* Footer styles */
+      .footer {
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+      }
+
+      .footer a {
+        color: #999;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="search-box" oninput="searchFunction()" placeholder="🔎   ENTER PRODUCT / HSN CODE HERE" autofocus>
+      <table id="search-results">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Average Weight (KG)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows will be filled dynamically using JavaScript -->
+        </tbody>
+      </table>
+      <p class="no-results">No matching products found.</p>
+      <footer class="footer"> Made by <a href="https://stanyfernando.blog" target="_blank">Stany Fernando</a>
+      </footer>
+    </div>
+    <script>
+      // Populate the table with data
+      var table = document.getElementById("search-results");
+      var tableHeaders = table.querySelector("thead").innerHTML;
+      var tableBody = table.querySelector("tbody");
+      var data = [
+        ["HAIR CARE", "", ""],
+        ["85163100", "DRYER", "0.6 KG"],
+        ["85102000", "GROOMER (CLIPPER)", "0.5 KG"],
+        ["85163200", "STRAIGHTNER", "0.5 KG"],
+        ["85101000", "SHAVER", "0.2 KG"],
+        ["KITCHEN APPLIANCES", "", ""],
+        ["85167990", "AIR FRYER", "5 KG"],
+        ["85094000", "BLENDER", "2 KG"],
+        ["85167100", "COFFEE MAKER", "3 KG"],
+        ["73211100", "COOKER (GAS)", "20 KG"],
+        ["73239300", "COOKWARE SET", "1.5 KG"],
+        ["85166090", "ELECTRIC OVEN", "30 KG"],
+        ["76151020", "FOOD STEAMER", "2 KG"],
+        ["73211100", "HOB", "20 KG"],
+        ["85166090", "BUILT-IN OVEN", "40 KG"],
+        ["85167920", "KETTLE", "1 KG"],
+        ["85165000", "MICROWAVE OVEN", "15 KG"],
+        ["76151020", "PRESSURE COOKER", "3 KG"],
+        ["85166010", "RICE COOKER", "2 KG"],
+        ["73239900", "STAINLESS STEEL WATER BOTTLE", "0.5 KG"],
+        ["85167100", "TEA MAKER", "1 KG"],
+        ["85167200", "TOASTER / SANDWICH MAKER (WAFFLE)", "2 KG"],
+        ["HOME APPLIANCES", "", ""],
+        ["84796000", "AIR COOLER", "10 KG"],
+        ["85272900", "CD RCR", "2 KG"],
+        ["85219000", "DVD", "2 KG"],
+        ["84181090", "FRIDGE", "60 KG"],
+        ["85279100", "HIFI SET / HOME THEATRE", "15 KG"],
+        ["85164000", "IRON", "1.5 KG"],
+        ["85272900", "RADIO", "1 KG"],
+        ["85182900", "SOUND BAR", "3 KG"],
+        ["85182900", "SPEAKER", "2 KG"],
+        ["92071000", "ORGAN - MUSIC", "7 KG"],
+        ["85287299", "TV (OVER) 32\"", "10 KG"],
+        ["85287291", "TV 32\"", "8 KG"],
+        ["85272900", "CAR STEREO SET (RADIO/PLAYER)", "2 KG"],
+        ["84145100", "FAN", "2 KG"],
+        ["85081100", "VACUUM CLEANER", "5 KG"],
+        ["84501143", "WASHING MACHINE F/L (5.5 KG TO 7.5 KG)", "60 KG"],
+        ["84158190", "WATER DISPENSOR (FILTER)", "15 KG"],
+        ["BATHROOM", "", ""],
+        ["85161000", "WATER HEATER / HOME SHOWER", "15 KG"],
+        ["84242000", "HIGH PRESSURE WASHER", "10 KG"],
+        ["EMERGENCY LIGHTS & TORCHES", "", ""],
+        ["85131010", "EMERGENCY LANTERN, TORCH, LIGHT", "0.5 KG"],
+        ["94054090", "EMERGENCY LIGHT LED", "0.3 KG"],
+        ["85121000", "TORCH", "0.2 KG"]
+      ];
+      data.forEach(function(row) {
+        var tr = document.createElement("tr");
+        row.forEach(function(cellData, index) {
+          var td = document.createElement("td");
+          td.textContent = cellData;
+          if (index === 0) {
+            td.classList.add("category-label");
+          } else {
+            td.classList.add("product-name");
+          }
+          tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
+      });
+      // Enhanced search functionality
+      function searchFunction() {
+        var input, filter, tr, td, i, txtValue, noResultsMessage;
+        input = document.getElementById("search-box");
+        filter = input.value.trim().toUpperCase(); // Convert input to uppercase
+        tr = table.getElementsByTagName("tr");
+        noResultsMessage = document.querySelector(".no-results");
+        if (filter.length < 3) {
+          table.style.display = "none";
+          noResultsMessage.style.display = "none";
+          return; // Exit function if less than 3 characters
+        }
+        table.style.display = "table"; // Show the table
+        var matchFound = false;
+        for (i = 0; i < tr.length; i++) {
+          var found = false;
+          var tdElements = tr[i].querySelectorAll("td");
+          for (var j = 0; j < tdElements.length; j++) {
+            td = tdElements[j];
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) { // Check if text contains the filter string
+              found = true;
+              break;
+            }
+          }
+          if (found) {
+            tr[i].style.display = "";
+            matchFound = true;
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+        noResultsMessage.style.display = matchFound ? "none" : "block"; // Show or hide no results message
+        // Display table headers when results are shown
+        table.querySelector("thead").innerHTML = tableHeaders;
+      }
+    </script>
+  </body>
+</html>
