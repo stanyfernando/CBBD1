@@ -107,6 +107,7 @@
       <table id="search-results">
         <thead>
           <tr>
+            <th>HS Code</th>
             <th>Product</th>
             <th>Average Weight (KG)</th>
           </tr>
@@ -125,12 +126,10 @@
       var tableHeaders = table.querySelector("thead").innerHTML;
       var tableBody = table.querySelector("tbody");
       var data = [
-        ["HAIR CARE", "", ""],
         ["85163100", "DRYER", "0.6 KG"],
         ["85102000", "GROOMER (CLIPPER)", "0.5 KG"],
         ["85163200", "STRAIGHTNER", "0.5 KG"],
         ["85101000", "SHAVER", "0.2 KG"],
-        ["KITCHEN APPLIANCES", "", ""],
         ["85167990", "AIR FRYER", "5 KG"],
         ["85094000", "BLENDER", "2 KG"],
         ["85167100", "COFFEE MAKER", "3 KG"],
@@ -147,7 +146,6 @@
         ["73239900", "STAINLESS STEEL WATER BOTTLE", "0.5 KG"],
         ["85167100", "TEA MAKER", "1 KG"],
         ["85167200", "TOASTER / SANDWICH MAKER (WAFFLE)", "2 KG"],
-        ["HOME APPLIANCES", "", ""],
         ["84796000", "AIR COOLER", "10 KG"],
         ["85272900", "CD RCR", "2 KG"],
         ["85219000", "DVD", "2 KG"],
@@ -165,24 +163,17 @@
         ["85081100", "VACUUM CLEANER", "5 KG"],
         ["84501143", "WASHING MACHINE F/L (5.5 KG TO 7.5 KG)", "60 KG"],
         ["84158190", "WATER DISPENSOR (FILTER)", "15 KG"],
-        ["BATHROOM", "", ""],
         ["85161000", "WATER HEATER / HOME SHOWER", "15 KG"],
         ["84242000", "HIGH PRESSURE WASHER", "10 KG"],
-        ["EMERGENCY LIGHTS & TORCHES", "", ""],
         ["85131010", "EMERGENCY LANTERN, TORCH, LIGHT", "0.5 KG"],
         ["94054090", "EMERGENCY LIGHT LED", "0.3 KG"],
         ["85121000", "TORCH", "0.2 KG"]
       ];
       data.forEach(function(row) {
         var tr = document.createElement("tr");
-        row.forEach(function(cellData, index) {
+        row.forEach(function(cellData) {
           var td = document.createElement("td");
           td.textContent = cellData;
-          if (index === 0) {
-            td.classList.add("category-label");
-          } else {
-            td.classList.add("product-name");
-          }
           tr.appendChild(td);
         });
         tableBody.appendChild(tr);
